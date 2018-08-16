@@ -1,0 +1,11 @@
+.estrela input[type=radio]{
+    display: none;
+}
+.estrela label i.fa:before{
+    content: '\f005';
+    color: #FC0;
+}.estrela input[type=radio]:checked ~ label i.fa:before{
+    color: #CCC;
+}
+
+
