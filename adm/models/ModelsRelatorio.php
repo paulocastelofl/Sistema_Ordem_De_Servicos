@@ -13,5 +13,24 @@ class ModelsRelatorio {
 
         return $this->Resultado;
     }
+    
+     public function listarPorStatusRecusado($status) {
+        
+        $sql = "select * from vw_ocorrencia where ocstatus = '" . $status . "'";
+        $Listar = new ModelsRead();
+        $Listar->fullread($sql);
+        $this->Resultado = $Listar->getResult();
+
+        return $this->Resultado;
+    }
+    
+    public function listarPorStatusAberto($status) {
+        $sql = "select * from vw_ocorrencia where ocstatus = '" . $status . "'";
+        $Listar = new ModelsRead();
+        $Listar->fullread($sql);
+        $this->Resultado = $Listar->getResult();
+
+        return $this->Resultado;
+    }
 
 }

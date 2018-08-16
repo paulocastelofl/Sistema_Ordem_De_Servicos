@@ -16,11 +16,29 @@ class ControleRelatorioManut {
 
         $status = filter_input(INPUT_GET, 'status', FILTER_DEFAULT);
 
-        $listarPorStatus = new ModelsRelatorio();
-        $this->Dados = $listarPorStatus->listarPorStatus($status);
-        
-        $CarregarView = new ConfigView("relatoriomanut/RelaFinalizado", $this->Dados);
-        $CarregarView->renderizarImpressao();
+        if ($status == "Finalizado"||$status == "Executando") {
+            $listarPorStatus = new ModelsRelatorio();
+            $this->Dados = $listarPorStatus->listarPorStatus($status);
+
+            $CarregarView = new ConfigView("relatoriomanut/RelaFinalizado", $this->Dados);
+            $CarregarView->renderizarImpressao();
+            
+        } elseif ($status == "Recusado") {
+            $listarPorStatus = new ModelsRelatorio();
+            $this->Dados = $listarPorStatus->listarPorStatusRecusado($status);
+            
+            //var_dump($this->Dados);
+
+            $CarregarView = new ConfigView("relatoriomanut/RelaAbertoRecusado", $this->Dados);
+            $CarregarView->renderizarImpressao();
+            
+        }elseif ($status == "Aberto") {
+            $listarPorStatus = new ModelsRelatorio();
+            $this->Dados = $listarPorStatus->listarPorStatusAberto($status);
+
+            $CarregarView = new ConfigView("relatoriomanut/RelaAbertoRecusado", $this->Dados);
+            $CarregarView->renderizarImpressao();
+        }
     }
 
 }

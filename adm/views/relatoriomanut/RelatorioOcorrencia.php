@@ -20,6 +20,9 @@
                 <div class="col-sm-8">
                     <select name = "status" class="form-control">
                         <option>Finalizado</option>   
+                        <option>Recusado</option>   
+                        <option>Executando</option>      
+                        <option>Aberto</option>      
                     </select>
                 </div>
             </div>
